@@ -1,0 +1,11 @@
+<div class="property-card-container">
+  <div *ngFor="let property of propertyListings" class="property-card">
+    <img [src]="property.ThumbnailURL" alt="Property Thumbnail">
+    <h2>{{ property.Title | slice:0:20 }}</h2>
+    <p>{{ property.Location }}</p>
+    <p>Bedrooms: {{ property.Bedrooms }}</p>
+    <p>Bathrooms: {{ property.Bathrooms }}</p>
+    <p>Price: {{ property['Sale Price']| currency }}</p>
+    <button (click)="goToDetails(property)">View Details</button>
+  </div>
+</div>

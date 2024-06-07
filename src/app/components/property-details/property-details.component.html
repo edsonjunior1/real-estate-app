@@ -1,0 +1,17 @@
+<ng-container *ngIf="property">
+  <div class="property-card-container">
+    <div class="property-card">
+      <h2>{{ property.Title }}</h2>
+      <img [src]="property.ThumbnailURL" alt="property Image">
+      <p>Location: {{ property.Location }}</p>
+      <p>Bedrooms: {{ property.Bedrooms }}</p>
+      <p>Bathrooms: {{ property.Bathrooms }}</p>
+      <p>Parking Spaces: {{ property.Parking }}</p>
+      <p>Square Footage: {{ property.Sqft }}</p>
+      <p>Year Built: {{ property.YearBuilt }}</p>
+      <p>Price: {{ property['Sale Price'] | currency }}</p>
+      <p>Description: {{ property.Description }}</p>
+      <p>Date Listed: {{ property.DateListed | date:'MMM d, y' }}</p>
+    </div>
+  </div>
+</ng-container>
