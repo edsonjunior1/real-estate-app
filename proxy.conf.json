@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://s3.us-west-2.amazonaws.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": "/cdn.number8.com/LA"
+    }
+  }
+}
