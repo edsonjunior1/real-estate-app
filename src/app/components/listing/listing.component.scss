@@ -1,0 +1,22 @@
+.property-card {
+  width: calc(33.33% - 10px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.property-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.property-card h2 {
+  font-size: 16px;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
