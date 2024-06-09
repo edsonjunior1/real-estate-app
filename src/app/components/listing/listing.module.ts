@@ -1,13 +1,27 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ListingComponent } from './listing.component';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-const routes: Routes = [
-  { path: '', component: ListingComponent }
-];
+import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+
+import { ListingComponent } from "./listing.component";
+import { FilterComponent } from './components/filter/filter.component';
+import { ListingRoutingModule } from './listing-routing.module';
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  declarations:[
+    ListingComponent,
+    FilterComponent
+  ],
+  imports:[
+    CommonModule,
+    MatSliderModule,
+    MatButtonModule,
+    ListingRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  exports: []
 })
-export class ListingRoutingModule { }
+export class ListingModule { }

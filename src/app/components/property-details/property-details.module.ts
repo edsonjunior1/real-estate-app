@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PropertyDetailsComponent } from './property-details.component';
+import { CommonModule } from '@angular/common';
 
-const routes: Routes = [
-  { path: '', component: PropertyDetailsComponent }
-];
+import { PropertyDetailsComponent } from './property-details.component';
+import { PropertyDetailsRoutingModule } from './property-details-routing.module';
+
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  declarations:[
+    PropertyDetailsComponent
+  ],
+  imports: [
+    CommonModule,
+    PropertyDetailsRoutingModule
+  ],
+  exports: []
 })
-export class PropertyDetailsRoutingModule { }
+export class PropertyDetailsModule { }
