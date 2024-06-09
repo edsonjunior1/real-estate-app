@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ListingComponent implements OnInit, OnDestroy {
   public propertyListings: Property[] = [];
+  public filterCriteria: any = {};
 
   private _subscription = new Subscription();
 
@@ -27,12 +28,25 @@ export class ListingComponent implements OnInit, OnDestroy {
     this._router.navigate(['/property-details'], { state: { property } })
   }
 
+  public onFilterChange(criteria: any): void {
+    this.filterCriteria = criteria;
+    this._getAllProperties();
+  }
+
   private _getAllProperties() {
     this._subscription.add(
       this._propertyService.getProperties().subscribe((data) => {
-        this.propertyListings = data;
+        this.propertyListings = data.filter(properties => this.applyFilter(properties));
       })
     )
+  }
+
+  private applyFilter(listing: Property): boolean {
+    const { bedrooms, bathrooms, parkingSpaces, priceRange } = this.filterCriteria;
+    return (!bedrooms || listing.Bedrooms >= bedrooms) &&
+      (!bathrooms || listing.Bathrooms >= bathrooms) &&
+      (!parkingSpaces || listing.Parking >= parkingSpaces) &&
+      (!priceRange || listing['Sale Price'] <= priceRange);
   }
 
   ngOnDestroy(): void {
