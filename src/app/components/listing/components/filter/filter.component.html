@@ -1,0 +1,35 @@
+<div class="filter-section">
+  <form [formGroup]="filterForm">
+
+    <label for="bedrooms">
+      Bedrooms:
+      <select formControlName="bedrooms" id="bedrooms">
+        <option *ngFor="let num of numberOptions" [value]="num">{{ num }}</option>
+      </select>
+    </label>
+
+    <label for="bathrooms">
+      Bathrooms:
+      <select formControlName="bathrooms" id="bathrooms">
+        <option *ngFor="let num of numberOptions" [value]="num">{{ num }}</option>
+      </select>
+    </label>
+
+    <label for="parkingSpaces">
+      Parking Spaces:
+      <select formControlName="parkingSpaces" id="parkingSpaces">
+        <option *ngFor="let num of numberOptions" [value]="num">{{ num }}</option>
+      </select>
+    </label>
+
+    <div class="price-range">
+      <label for="price-range">Price Range:</label>
+      <mat-slider min="0" max="10000000" step="10000" discrete>
+        <input matSliderThumb id="price-range" formControlName="priceRange">
+      </mat-slider>
+      <span>{{ filterForm.get('priceRange')?.value | currency }}</span>
+    </div>
+
+    <button mat-raised-button (click)="applyFilter()">Filter</button>
+  </form>
+</div>
