@@ -1,17 +1,90 @@
 <ng-container *ngIf="property">
-  <div class="property-card-container">
-    <div class="property-card">
-      <h2>{{ property.Title }}</h2>
-      <img [src]="property.PictureURL" alt="property Image">
+  <div class="property-card-content">
+    <div class="d-flex align-items-center space-between">
+        <h1>{{ property.Title }}</h1>
+        <h2>{{ property['Sale Price'] | currency }}</h2>
+      <button class="save-btn">
+        Save Property
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+    <div class="d-flex infos">
       <p>Location: {{ property.Location }}</p>
-      <p>Bedrooms: {{ property.Bedrooms }}</p>
-      <p>Bathrooms: {{ property.Bathrooms }}</p>
-      <p>Parking Spaces: {{ property.Parking }}</p>
-      <p>Square Footage: {{ property.Sqft }}</p>
-      <p>Year Built: {{ property.YearBuilt }}</p>
-      <p>Price: {{ property['Sale Price'] | currency }}</p>
-      <p>Description: {{ property.Description }}</p>
-      <p>Date Listed: {{ property.DateListed | date:'MMM d, y' }}</p>
+      <p>Date Listed: {{ property.DateListed | date:'longDate' }}</p>
+    </div>
+  </div>
+
+  <div class="property-details">
+    <div class="property-info card">
+      <div class="image">
+        <img [src]="property.PictureURL" alt="Property Image">
+      </div>
+      <div class="info">
+        <div class="info-item">
+          <p>{{ property.Bedrooms }}</p>
+          <p>Beds</p>
+        </div>
+        <div class="info-item">
+          <p>{{ property.Bathrooms }}</p>
+          <p>Baths</p>
+        </div>
+        <div class="info-item">
+          <p>{{ property.Parking }}</p>
+          <p>Parking</p>
+        </div>
+        <div class="info-item">
+          <p>{{ property.Sqft }}</p>
+          <p>Sqft</p>
+        </div>
+        <div class="info-item">
+          <p>{{ property.YearBuilt }}</p>
+          <p>Year</p>
+        </div>
+      </div>
+      <div class="description">
+        <p>{{ property.Description }}</p>
+      </div>
+    </div>
+
+    <div class="contact-agent card">
+      <h3>Contact Agent</h3>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" formControlName="fullName">
+          <div *ngIf="contactForm.controls['fullName'].invalid && (contactForm.controls['fullName'].dirty || contactForm.controls['fullName'].touched)" class="error-message">
+            Full Name is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email">
+          <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)" class="error-message">
+            Enter a valid email
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" formControlName="phone">
+          <div *ngIf="contactForm.controls['phone'].invalid && (contactForm.controls['phone'].dirty || contactForm.controls['phone'].touched)" class="error-message">
+            Phone number is required and should contain only numbers
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments</label>
+          <textarea id="comments" formControlName="comments"></textarea>
+          <div *ngIf="contactForm.controls['comments'].invalid && (contactForm.controls['comments'].dirty || contactForm.controls['comments'].touched)" class="error-message">
+            Comments are required
+          </div>
+        </div>
+        <button type="submit" [disabled]="contactForm.invalid">Contact Now</button>
+        <div *ngIf="contactForm.invalid" class="error-message">{{ formError }}</div>
+        <div *ngIf="isFormSubmited" class="success-message">{{ formSuccess }}</div>
+      </form>
     </div>
   </div>
 </ng-container>
+
+<div class="back-btn">
+  <button mat-raised-button (click)="goToPropertyList()">Back</button>
+</div>

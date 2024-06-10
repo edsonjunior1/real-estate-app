@@ -24,7 +24,7 @@
 
     <div class="price-range">
       <label for="price-range">Price Range:</label>
-      <mat-slider min="0" max="10000000" step="10000" discrete>
+      <mat-slider min="0" max="1000000" step="5000" discrete>
         <input matSliderThumb id="price-range" formControlName="priceRange">
       </mat-slider>
       <span>{{ filterForm.get('priceRange')?.value | currency }}</span>
