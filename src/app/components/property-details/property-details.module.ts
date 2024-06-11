@@ -7,11 +7,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { PropertyDetailsComponent } from './property-details.component';
 import { PropertyDetailsRoutingModule } from './property-details-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FavoriteModalService } from './components/favorite-modal/favorite-modal.service';
+import { FavoriteModalComponent } from './components/favorite-modal/favorite-modal.component';
 
 
 @NgModule({
   declarations:[
-    PropertyDetailsComponent
+    PropertyDetailsComponent,
+    FavoriteModalComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     MatButtonModule,
   ],
-  exports: []
+  exports: [],
+  providers:[FavoriteModalService]
 })
 export class PropertyDetailsModule { }

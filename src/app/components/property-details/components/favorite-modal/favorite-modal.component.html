@@ -1,0 +1,20 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-title">
+      <h1>Favorites</h1>
+      <button mat-button (click)="onClose()"><mat-icon>close</mat-icon></button>
+    </div>
+    <div class="favorite-container">
+      <div *ngFor="let favorite of properties" class="favorite-card">
+        <img [src]="favorite.ThumbnailURL" alt="Listing Thumbnail">
+        <h3>{{ favorite.Title }}</h3>
+        <p>{{ favorite.Location }}</p>
+        <p>Bedrooms: {{ favorite.Bedrooms }}</p>
+        <p>Bathrooms: {{ favorite.Bathrooms }}</p>
+        <p>Parking Spaces: {{ favorite.Parking }}</p>
+        <p>Price: {{ favorite['Sale Price'] | currency }}</p>
+        <button mat-raised-button (click)="goToDetails(favorite)">View Details</button>
+      </div>
+    </div>
+  </div>
+</div>

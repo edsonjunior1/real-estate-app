@@ -27,6 +27,30 @@ To optimize the loading time and performance, I implemented lazy loading for the
 
 - **ListingsService**: Handles the fetching of property listings data from a backend or mock data source. This service is injected into the `ListingsComponent` to retrieve and filter data based on user inputs.
 
+### Modal Factory Pattern
+
+- **FavoriteModalService**:  Manages the creation and destruction of modal components.
+- `openModal`: Dynamically creates a modal component and injects it into the specified `ViewContainerRef`.
+- `closeModal`: Destroys the modal component.
+
+### Modal Component
+
+1. **FavoriteModalComponent**: Represents the modal component.
+2. **Emits** events or communicates with the parent component using `@Output` properties or custom methods.
+3. **Handles** user interactions within the modal.
+
+### Property Details Component
+
+- **PropertyDetailsComponent**: Utilizes the modal service to open the modal.
+- **Injects** the `FavoriteModalService` to open the modal when needed.
+- **Handles** the state changes or actions triggered by the modal.
+
+### Benefits
+
+- **Modularity**: Modal creation logic is centralized in the service, promoting modularity and easier maintenance.
+- **Flexibility**: Allows for creating different types of modals with varying content or functionalities.
+- **Dynamic Creation**: Modals can be created dynamically based on user interactions or application state.
+
 ### Forms and Filtering
 
 - **Reactive Forms**: Used in the `FilterComponent` to manage the filter form. This allows for reactive and dynamic updates to the filter criteria.

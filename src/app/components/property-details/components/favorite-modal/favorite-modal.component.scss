@@ -1,0 +1,65 @@
+.modal-overlay {
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(#666, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    width: 100%;
+    margin: 2.5rem;
+    max-width: 1200px;
+    max-height: 94%;
+    background-color: #f2f2f2;
+    padding: 0 1.5rem;
+    overflow-y: auto;
+
+    .modal-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      padding-top: 2rem;
+
+      mat-icon {
+        color: #333;
+      }
+    }
+
+    .favorite-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px;
+
+      .favorite-card {
+        width: calc(25% - 20px);
+        margin: 0 10px 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+
+        img {
+          width: 100%;
+          max-width: 350px;
+          height: 350px;
+          object-fit: cover;
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+
+        h3 {
+          margin-bottom: 0;
+          margin-top: 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
