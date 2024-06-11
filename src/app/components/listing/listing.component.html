@@ -7,11 +7,10 @@
       <img [src]="property.ThumbnailURL" alt="Property Thumbnail">
       <h2>{{ property.Title | slice:0:20 }}</h2>
       <p>{{ property.Location }}</p>
-      <p>{{ property.Bedrooms }}&nbsp;beds | {{ property.Bathrooms }}&nbsp;baths</p>
-      <p>Parking: {{ property.Parking }}</p>
+      <p>{{ property.Bedrooms }}&nbsp;beds | {{ property.Bathrooms }}&nbsp;baths | {{ property.Parking }}&nbsp;parking
+        spaces</p>
       <p class="price">{{ property['Sale Price']| currency }}</p>
       <button mat-raised-button (click)="goToDetails(property)">View Details</button>
     </div>
   </div>
 </section>
-
